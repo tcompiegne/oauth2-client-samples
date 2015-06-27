@@ -1,0 +1,62 @@
+@(title: String)(content: Html)
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>@title</title>
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("bootstrap/css/bootstrap.min.css")">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+<link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="@routes.Application.index()">OAuth2 Todo List</a>
+      </div>
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="@routes.Application.index()">Home</a></li>
+          @if(session.get("username")) {
+          <li><a href="@routes.Todo.index()">My Todos</a></li>
+          } else {
+          <li><a href="@routes.Application.login()">Login</a></li>
+          }
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          @if(session.get("username")) {
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@session.get("username") <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>           
+                <a href="@play.Play.application().configuration().getString("oauth.url")/logout?target_url=@play.Play.application().configuration().getString("oauth.logout.target.url")"><i class="glyphicon glyphicon-log-out"></i> Sign-out</a>
+              </li>            
+            </ul>
+          </li>
+          }
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  @content
+  
+  <script src="@routes.Assets.at("javascripts/jquery-2.1.3.min.js")" type="text/javascript"></script>
+  <script src="@routes.Assets.at("bootstrap/js/bootstrap.min.js")" type="text/javascript"></script>
+  <script type="text/javascript">
+  	$(document).ready(function() {
+  		$('.navbar-collapse').find('a[href="' + location.pathname + '"]').parents('li').addClass('active');
+  	});
+  </script>
+</body>
+</html>

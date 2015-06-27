@@ -1,0 +1,14 @@
+@(todos:java.util.List[models.Todo]) 
+
+@main("Todo List Page"){
+<div class="container">
+  <div class="content">
+    <ul class="list-group">
+      @for(t <- todos) {
+        <li class="list-group-item">@t.description</li>
+      }
+    </ul>
+  </div>
+</div>
+
+}

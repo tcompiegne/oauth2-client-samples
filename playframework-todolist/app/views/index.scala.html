@@ -1,0 +1,37 @@
+@(message: String)
+
+@main("Welcome to OAuth2 Todo List Client app") {
+  <div class="jumbotron" style="margin-top:50px;">
+    <div class="container">
+      <h1>Todolist with OAuth2</h1>
+      <p>This is a task list manager based on Play Framework, OAuth2 and Bootstrap. This is a sample application to show you how to access oauth2 protected data.</p>
+      <p>This is the client application part, Enjoy !</p>
+      @if(!session.get("username")) {
+        <p><a class="btn btn-primary btn-lg" href="@routes.Application.login()" role="button">Sign in</a></p>
+      }
+    </div>
+  </div>
+  
+  <div class="container homepage">
+    <div class="row">
+      <div class="col-lg-4">
+        <img class="img-circle" src="@routes.Assets.at("images/play_full_color.png")" alt="Generic placeholder image" width="140" height="140">
+        <h2>Play Framework</h2>
+        <p>Play Framework makes it easy to build web applications with Java & Scala. Play is based on a lightweight, stateless, web-friendly architecture. </p>
+        <p><a class="btn btn-default" href="https://www.playframework.com/" role="button">View details</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img class="img-circle" src="@routes.Assets.at("images/oauth-2-sm.png")" alt="Generic placeholder image" width="140" height="140">
+        <h2>OAuth2</h2>
+        <p>OAuth 2.0 is the next evolution of the OAuth protocol which was originally created in late 2006. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices.</p>
+        <p><a class="btn btn-default" href="http://oauth.net/2/" role="button">View details</a></p>
+      </div>
+      <div class="col-lg-4">
+        <img class="img-circle" src="@routes.Assets.at("images/bootstrap-logo.png")" alt="Generic placeholder image" width="140" height="140">
+        <h2>Bootstrap</h2>
+        <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+        <p><a class="btn btn-default" href="http://getbootstrap.com/" role="button">View details</a></p>
+      </div>
+    </div>
+  </div>
+}
