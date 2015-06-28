@@ -54,7 +54,7 @@ To do so, we will use the Authorization Code Grant Flow :
 
 ![oauth2-auth-code-flow] (https://github.com/tcompiegne/oauth2-client-samples/raw/master/site/auth_code_flow.png)
 
-When you click on the "Sign in" button you can see thay you are redirected to the Authorization Server Login page (see the url change) :
+When you click on the "Sign in" button you can see that you are redirected to the Authorization Server Login page (see the url change) :
 
 ![login-page] (https://github.com/tcompiegne/oauth2-client-samples/raw/master/site/login_page.png)
 
