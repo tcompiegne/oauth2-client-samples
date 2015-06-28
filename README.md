@@ -1,5 +1,6 @@
-# oauth2-application-client-samples
-OAuth2 Application Clients fetching OAuth2 proctected resources
+OAuth2 Application Clients
+
+The goal is to implement the same application using different technologies to show you how you can fetch OAuth2 proctected resources.
 
 About TodoList OAuth2 Client
 =================================
