@@ -33,7 +33,7 @@ https://www.playframework.com/ (current version : 2.3.8)
 
 2 . Build and run the OAuth2 client
 
-Choose a specific project and follow the README to get ready.
+Choose a specific project and follow the instructions in README file to get ready.
 
 OAuth 2 in Action
 ==============================
