@@ -1,4 +1,5 @@
 OAuth2 Application Clients
+=================================
 
 The goal is to implement the same application using different technologies to show you how you can fetch OAuth2 proctected resources.
 
