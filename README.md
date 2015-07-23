@@ -22,8 +22,8 @@ How to use it ?
 and the OAuth2 resource server :
 
 <pre>
-- git clone https://github.com/tcompiegne/oauth2-resource-server-play-todolist.git
-- cd oauth2-resource-server-play-todolist
+- git clone https://github.com/tcompiegne/oauth2-resource-server-samples
+- cd oauth2-resource-server-samples/playframework-todolist
 - activator "~run 9001"
 </pre>
 
