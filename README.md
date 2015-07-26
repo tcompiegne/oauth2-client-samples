@@ -62,7 +62,7 @@ After the login process, you are redirected back to the client application and y
 
 ![user-page] (https://github.com/tcompiegne/oauth2-client-samples/raw/master/site/user_page.png)
 
-The "My Todos" page retrieve your todos from the Resource Server and allons tous to do the basic CRUD actions thanks to the access_token retrieve after logged in to the authorization server :
+The "My Todos" page retrieve your todos from the Resource Server and allow you to do the basic CRUD actions thanks to the access_token retrieve after logged in to the authorization server :
 
 ![user-todo-list] (https://github.com/tcompiegne/oauth2-client-samples/raw/master/site/user_todo_list.png)
 
