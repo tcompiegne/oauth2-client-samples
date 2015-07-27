@@ -11,7 +11,7 @@
           <h1>Todolist with OAuth2</h1>
           <p>This is a task list manager based on Play Framework, OAuth2 and Bootstrap. This is a sample application to show you how to access oauth2 protected data.</p>
           <p>This is the client application part, Enjoy !</p>
-          <p th:if="${session.username}"><a class="btn btn-primary btn-lg" href="@routes.Application.login()" role="button">Sign in</a></p>
+          <p th:if="${session.username == null}"><a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Sign in</a></p>
         </div>
       </div>
       

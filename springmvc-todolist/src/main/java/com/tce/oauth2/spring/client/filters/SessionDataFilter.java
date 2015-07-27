@@ -21,48 +21,52 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *******************************************************************************/
-package com.tce.oauth2.spring.client;
+package com.tce.oauth2.spring.client.filters;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.IOException;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import com.tce.oauth2.spring.client.services.UrlService;
+import org.springframework.stereotype.Component;
 
 /**
  * 
  * @author Titouan COMPIEGNE
  *
  */
-@SpringBootApplication
-public class Application {
+@Component
+public class SessionDataFilter implements Filter {
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.setMessageConverters(getMessageConverters());
-		return restTemplate;
+	@Override
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain) throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
+		HttpServletResponse resp = (HttpServletResponse) response;
+		
+		// Todo Controller is not authorized for anonymous user
+    	if (req.getRequestURI().indexOf("/todos") != -1) {
+    		if (req.getSession().getAttribute("username") == null) {
+            	resp.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Unauthorized");
+    		} else {
+    			filterChain.doFilter(request, response);
+    		}
+        } else {
+        	filterChain.doFilter(request, response);
+        }
 	}
 
-	@Bean(name = "urlService")
-	public UrlService urlService() {
-		return new UrlService();
+	@Override
+	public void init(FilterConfig filterConfig) throws ServletException {
 	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-
-	private List<HttpMessageConverter<?>> getMessageConverters() {
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
-		converters.add(new MappingJackson2HttpMessageConverter());
-		return converters;
+	
+	@Override
+	public void destroy() {
 	}
 
 }

@@ -13,19 +13,20 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="@routes.Application.index()">OAuth2 Todo List</a>
+        <a class="navbar-brand" th:href="@{/}">OAuth2 Todo List</a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul th:with="condition=${session.username}" class="nav navbar-nav">
-          <li><a href="@routes.Application.index()">Home</a></li>
-          <li th:if="${condition}"><a href="@routes.Todo.index()">My Todos</a></li>
+          <li><a th:href="@{/}">Home</a></li>
+          <li th:if="${condition}"><a th:href="@{/todos}">My Todos</a></li>
           <li th:unless="${condition}"><a th:href="@{/login}">Login</a></li>
         </ul>
         <ul th:with="condition=${session.username}" class="nav navbar-nav navbar-right">
           <li th:if="${condition}" class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">${session.username} <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span th:text="${session.username}">User</span> <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li>           
+              <li>
+              	<a th:href="${@urlService.getLogoutRedirectUri()}"><i class="glyphicon glyphicon-log-out"></i> Sign-out</a>           
               </li>            
             </ul>
           </li>

@@ -21,48 +21,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *******************************************************************************/
-package com.tce.oauth2.spring.client;
+package com.tce.oauth2.spring.client.services;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.web.client.RestTemplate;
-
-import com.tce.oauth2.spring.client.services.UrlService;
+import org.springframework.beans.factory.annotation.Value;
 
 /**
  * 
  * @author Titouan COMPIEGNE
  *
  */
-@SpringBootApplication
-public class Application {
+public class UrlService {
 
-	@Bean
-	public RestTemplate restTemplate() {
-		RestTemplate restTemplate = new RestTemplate();
-		restTemplate.setMessageConverters(getMessageConverters());
-		return restTemplate;
+	@Value("${oauth.url}")
+	private String OAUTH_URL;
+	
+	@Value("${oauth.logout.target.url}")
+	private String OAUTH_LOGOUT_TARGET_URL;
+	
+	public String getLogoutRedirectUri() {
+		return OAUTH_URL+"/logout?target_url="+OAUTH_LOGOUT_TARGET_URL;
 	}
-
-	@Bean(name = "urlService")
-	public UrlService urlService() {
-		return new UrlService();
-	}
-
-	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
-	}
-
-	private List<HttpMessageConverter<?>> getMessageConverters() {
-		List<HttpMessageConverter<?>> converters = new ArrayList<HttpMessageConverter<?>>();
-		converters.add(new MappingJackson2HttpMessageConverter());
-		return converters;
-	}
-
 }
