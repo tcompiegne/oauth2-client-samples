@@ -1,7 +1,7 @@
 About TodoList OAuth2 Client
 =================================
 
-![oauth2-client-play-todolist] (https://github.com/tcompiegne/oauth2-client-samples/raw/master/site/oauth2_client_homepage.png)
+![oauth2-client-play-todolist] (https://github.com/tcompiegne/oauth2-client-samples/playframework-todolist/raw/master/site/oauth2_play_client_homepage.png)
 
 How to use it ?
 ==============================
