@@ -16,6 +16,7 @@ You can check the [parent project](https://github.com/tcompiegne/oauth2-client-s
 * [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring MVC](http://docs.spring.io/spring/docs/current/spring-framework-reference/html/mvc.html)
 * [Spring Rest Template](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
+* [Thymeleaf](http://www.thymeleaf.org/)
 
 ## Run the application
 - git clone https://github.com/tcompiegne/oauth2-client-samples
