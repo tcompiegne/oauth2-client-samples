@@ -1,4 +1,4 @@
-name := """oauth2-client-play-todolist"""
+name := """oauth2-todolist-playframework-client-app"""
 
 version := "1.0-SNAPSHOT"
 
