@@ -6,7 +6,7 @@ OAuth2 Play Framework TodoList Application Client
 
 This is a simple Web Application Client that provides a Todo List Manager fetching Resource Provider protected by OAuth 2. The application is based on Play Framework. 
 
-You can check the parent project to get more details about the others part of this project (OAuth2 Authorization Server and OAuth Resource Providers).
+You can check the [parent project](https://github.com/tcompiegne/oauth2-client-samples) to get more details about the others part of this project (OAuth2 Authorization Server and OAuth Resource Providers).
 
 ## Client side
 * [Twitter bootstrap](http://getbootstrap.com/)
