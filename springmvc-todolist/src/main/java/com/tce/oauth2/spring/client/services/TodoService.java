@@ -33,8 +33,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.tce.oauth2.spring.client.models.Todo;
@@ -73,35 +71,27 @@ public class TodoService {
 		return Arrays.asList(todos);
 	}
 
-	public Todo add(String accessToken, String username, String description) {
+	public Todo add(String accessToken, Todo todo) {
 		// Set the headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
-		
-		// Set the data to post
-		MultiValueMap<String, String> map = new LinkedMultiValueMap<String, String>();
-		map.add("username", username);
-		map.add("description", description);  
+		headers.add("Content-Type", "application/json");
 		
 		// Post request
-		HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<MultiValueMap<String, String>>(map, headers);
+		HttpEntity<Todo> request = new HttpEntity<Todo>(todo, headers);
 		Todo todoAdded = restTemplate.postForObject(OAUTH_RESOURCE_SERVER_URL + "/rest/todos/add", request, Todo.class);
 
 		return todoAdded;
 	}
 	
-	public Todo edit(String accessToken, Long id, String description) {
+	public Todo edit(String accessToken, Todo todo) {
 		// Set the headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
-		
-		// Set the data to post
-		MultiValueMap<String, Object> map = new LinkedMultiValueMap<String, Object>();
-		map.add("id", id);
-		map.add("description", description);  
+		headers.add("Content-Type", "application/json");
 		
 		// Post request
-		HttpEntity<MultiValueMap<String, Object>> request = new HttpEntity<MultiValueMap<String, Object>>(map, headers);
+		HttpEntity<Todo> request = new HttpEntity<Todo>(todo, headers);
 		Todo todoEdited = restTemplate.postForObject(OAUTH_RESOURCE_SERVER_URL + "/rest/todos/edit", request, Todo.class);
 
 		return todoEdited;
@@ -111,6 +101,7 @@ public class TodoService {
 		// Set the headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
+		headers.add("Content-Type", "application/json");
 		
 		// Post request
 		HttpEntity<String> request = new HttpEntity<String>(headers);

@@ -30,8 +30,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tce.oauth2.spring.client.models.Todo;
@@ -59,9 +62,24 @@ public class TodoController {
 	}
 	
 	@RequestMapping(value = "/todos/add", method = RequestMethod.POST)
-	public String add (@ModelAttribute("todo") Todo todo, HttpServletRequest request) {
+	public String add(@ModelAttribute("todo") Todo todo, HttpServletRequest request) {
 		todo.setUsername((String) request.getSession().getAttribute("username"));
-		todoService.add((String) request.getSession().getAttribute("access_token"), todo.getUsername(), todo.getDescription());
+		todoService.add((String) request.getSession().getAttribute("access_token"), todo);
+		return "redirect:/todos";
+	}
+	
+	@RequestMapping(value = "/todos/edit", method = RequestMethod.POST)
+	public @ResponseBody Todo edit(@RequestParam("pk") Long pk, @RequestParam("value") String value, HttpServletRequest request) {
+		Todo todo = new Todo();
+		todo.setId(pk);
+		todo.setDescription(value);
+		todo.setUsername((String) request.getSession().getAttribute("username"));
+		return todoService.edit((String) request.getSession().getAttribute("access_token"), todo);
+	}
+	
+	@RequestMapping(value = "/todos/{id}/delete", method = RequestMethod.POST)
+	public String delete(@PathVariable("id") Long id, HttpServletRequest request) {
+		todoService.delete((String) request.getSession().getAttribute("access_token"), id);
 		return "redirect:/todos";
 	}
 	

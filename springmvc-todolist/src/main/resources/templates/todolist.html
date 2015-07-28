@@ -24,19 +24,17 @@
                     </tr>
                     </thead>
                     <tbody>
-<!--                     @for(t <- todos) { -->
-<!--                     <tr> -->
-<!--                         <td style="width:75px">@t.id</a></td> -->
-<!--                         <td><a href="#" id="description" data-type="text" data-pk="@t.id" data-url="@routes.Todo.edit()" data-title="Enter description">@t.description</a></td> -->
-<!--                         <td style="width:145px"> -->
-<!--                             <div class="text-centered" style="float: left;"> -->
-<!--                                 @form(routes.Todo.delete(t.id)) { -->
-<!--                                     <a id="delForm@t.id" title="Delete" class="btn btn-danger btn-s text-centered alertDelete" href="#"><i class="glyphicon glyphicon-trash"></i></a> -->
-<!--                                 } -->
-<!--                             </div> -->
-<!--                         </td> -->
-<!--                     </tr> -->
-<!--                     } -->
+	                    <tr th:each="t : ${todos}">
+	                        <td style="width:75px" th:text="${t.id}"></td>
+	                        <td><a href="#" id="description" data-type="text" th:attr="data-pk=${t.id}, data-url=@{/todos/edit}" data-title="Enter description" th:text="${t.description}"></a></td>
+	                        <td style="width:145px">
+	                            <div class="text-centered" style="float: left;">
+	                            	<form th:action="@{/todos/{id}/delete(id=${t.id})}" method="post">
+	                                    <a th:attr="id='delForm' + ${t.id}" title="Delete" class="btn btn-danger btn-s text-centered alertDelete" href="#"><i class="glyphicon glyphicon-trash"></i></a>
+	                                </form>
+	                            </div>
+	                        </td>
+	                    </tr>
                     </tbody>
                 </table>
               </div>
