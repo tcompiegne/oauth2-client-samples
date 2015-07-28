@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.tce.oauth2.spring.client</groupId>
-	<artifactId>oauth2-spring-client-app</artifactId>
+	<artifactId>oauth2-todolist-spring-client-app</artifactId>
 	<version>1.0-SNAPSHOT</version>
 
 	<parent>
