@@ -36,6 +36,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.tce.oauth2.spring.client.models.Todo;
+import com.tce.oauth2.spring.client.models.TodoResponse;
 
 /**
  * 
@@ -97,15 +98,15 @@ public class TodoService {
 		return todoEdited;
 	}
 
-	public String delete(String accessToken, Long id) {
+	public TodoResponse delete(String accessToken, Long id) {
 		// Set the headers
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Authorization", "Bearer " + accessToken);
 		headers.add("Content-Type", "application/json");
 		
 		// Post request
-		HttpEntity<String> request = new HttpEntity<String>(headers);
-		String response = restTemplate.postForObject(OAUTH_RESOURCE_SERVER_URL + "/rest/todos/" + id + "/delete", request, String.class);
+		HttpEntity<String> request = new HttpEntity<String>("", headers);
+		TodoResponse response = restTemplate.postForObject(OAUTH_RESOURCE_SERVER_URL + "/rest/todos/" + id + "/delete", request, TodoResponse.class);
 
 		return response;
 	}
