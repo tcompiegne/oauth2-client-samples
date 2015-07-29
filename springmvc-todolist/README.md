@@ -6,7 +6,7 @@ OAuth2 Spring TodoList Application Client
 
 This is a simple Web Application Client that provides a Todo List Manager fetching Resource Provider protected by OAuth 2. The application is based on Spring Framework (Spring Boot with Spring MVC and Spring Rest Template). 
 
-You can check the [parent project](https://github.com/tcompiegne/oauth2-client-samples) to get more details about the others part of this project (OAuth2 Authorization Server and OAuth Resource Providers).
+You can check the [parent project](https://github.com/tcompiegne/oauth2-client-samples) to get more details about the other parts of this project (OAuth2 Authorization Server and OAuth Resource Providers).
 
 ## Client side
 * [Twitter bootstrap](http://getbootstrap.com/)
