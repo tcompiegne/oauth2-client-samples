@@ -38,7 +38,7 @@ Choose a specific project and follow the instructions in README file to get read
 OAuth 2 in Action
 ==============================
 
-To access your OAuth 2 protected Todo List, you must singin with the account that is linked with Authorization Server defined (by default) by these parameters :
+To access your OAuth 2 protected Todo List, you must singin with the account defined into the Authorization Server :
 
 ```xml
   <!-- Default authentication manager (Tests only) -->
