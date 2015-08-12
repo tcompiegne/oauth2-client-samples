@@ -14,11 +14,6 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
-		<script type="text/javascript">
-      $(document).ready(function() {
-        $('.navbar-collapse').find('a[href="' + location.pathname + '"]').parents('li').addClass('active');
-      });
-    </script>
   </head>
   <body ng-app="angularjsTodolistApp">
     <!--[if lte IE 8]>
@@ -78,7 +73,12 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/todolist.js"></script>
     <!-- endbuild -->
+		<script type="text/javascript">
+      $(document).ready(function() {
+        $('.navbar-collapse').find('a[href="' + location.pathname + '"]').parents('li').addClass('active');
+      });
+    </script>
 </body>
 </html>
