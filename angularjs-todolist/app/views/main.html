@@ -1,23 +1,31 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#/">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+<div class="jumbotron" style="margin-top:50px;">
+	<div class="container">
+	  <h1>Todolist with OAuth2</h1>
+    <p>This is a task list manager based on AngularJS, OAuth2 and Bootstrap. This is a sample application to show you how to access oauth2 protected data.</p>
+    <p>This is the client application part, Enjoy !</p>
+    <p th:if="${session.username == null}"><a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Sign in</a></p>
+  </div>
 </div>
-
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
-  </p>
-
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
+      
+<div class="container homepage">
+	<div class="row">
+    <div class="col-lg-4">
+      <img class="img-circle" src="images/spring-logo.png" alt="Generic placeholder image" width="140" height="140" />
+      <h2>AngularJS</h2>
+      <p>AngularJS is what HTML would have been, had it been designed for building web-apps. Declarative templates with data-binding, MVW, MVVM, MVC, ...</p>
+      <p><a class="btn btn-default" href="https://angularjs.org/" role="button">View details</a></p>
+    </div>
+	  <div class="col-lg-4">
+      <img class="img-circle" src="images/oauth-2-sm.png" alt="Generic placeholder image" width="140" height="140" />
+      <h2>OAuth2</h2>
+      <p>OAuth 2.0 is the next evolution of the OAuth protocol which was originally created in late 2006. OAuth 2.0 focuses on client developer simplicity while providing specific authorization flows for web applications, desktop applications, mobile phones, and living room devices.</p>
+      <p><a class="btn btn-default" href="http://oauth.net/2/" role="button">View details</a></p>
+    </div>
+    <div class="col-lg-4">
+      <img class="img-circle" src="images/bootstrap-logo.png" alt="Generic placeholder image" width="140" height="140" />
+      <h2>Bootstrap</h2>
+      <p>Bootstrap, a sleek, intuitive, and powerful mobile first front-end framework for faster and easier web development.</p>
+      <p><a class="btn btn-default" href="http://getbootstrap.com/" role="button">View details</a></p>
+    </div>
+  </div>
 </div>

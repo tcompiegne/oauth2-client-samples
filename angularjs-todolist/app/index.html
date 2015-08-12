@@ -14,6 +14,11 @@
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+		<script type="text/javascript">
+      $(document).ready(function() {
+        $('.navbar-collapse').find('a[href="' + location.pathname + '"]').parents('li').addClass('active');
+      });
+    </script>
   </head>
   <body ng-app="angularjsTodolistApp">
     <!--[if lte IE 8]>
@@ -21,54 +26,40 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">angularjsTodolist</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
-
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
-
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
-     <script>
-       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');
-    </script>
+		<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="navbar">
+    	<div class="container">
+      	<div class="navbar-header">
+        	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          	<span class="sr-only">Toggle navigation</span>
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+          	<span class="icon-bar"></span>
+        	</button>
+        	<a class="navbar-brand" th:href="@{/}">OAuth2 Todo List</a>
+      	</div>
+      	<div id="navbar" class="collapse navbar-collapse">
+        	<ul th:with="condition=${session.username}" class="nav navbar-nav">
+          	<li><a th:href="@{/}">Home</a></li>
+          	<li th:if="${condition}"><a th:href="@{/todos}">My Todos</a></li>
+          	<li th:unless="${condition}"><a th:href="@{/login}">Login</a></li>
+        	</ul>
+        	<ul th:with="condition=${session.username}" class="nav navbar-nav navbar-right">
+          	<li th:if="${condition}" class="dropdown">
+            	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span th:text="${session.username}">User</span> <b class="caret"></b></a>
+            	<ul class="dropdown-menu">
+              	<li>
+              		<a th:href="${@urlService.getLogoutRedirectUri()}"><i class="glyphicon glyphicon-log-out"></i> Sign-out</a>           
+              	</li>            
+            	</ul>
+          	</li>
+        	</ul>
+      	</div>
+      	<!--/.nav-collapse -->
+    	</div>
+  	</nav>
+    
+		<!-- dynamic body -->
+  	<div ng-view=""></div>
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -84,10 +75,10 @@
     <!-- endbower -->
     <!-- endbuild -->
 
-        <!-- build:js({.tmp,app}) scripts/scripts.js -->
-        <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/controllers/about.js"></script>
-        <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <!-- endbuild -->
 </body>
 </html>
