@@ -3,14 +3,14 @@
 	  <h1>Todolist with OAuth2</h1>
     <p>This is a task list manager based on AngularJS, OAuth2 and Bootstrap. This is a sample application to show you how to access oauth2 protected data.</p>
     <p>This is the client application part, Enjoy !</p>
-    <p th:if="${session.username == null}"><a class="btn btn-primary btn-lg" th:href="@{/login}" role="button">Sign in</a></p>
+    <p ng-hide="username"><a class="btn btn-primary btn-lg" href="#/login" role="button">Sign in</a></p>
   </div>
 </div>
       
 <div class="container homepage">
 	<div class="row">
     <div class="col-lg-4">
-      <img class="img-circle" src="images/spring-logo.png" alt="Generic placeholder image" width="140" height="140" />
+      <img class="img-circle" src="images/angularjs_logo.png" alt="Generic placeholder image" width="140" height="140" />
       <h2>AngularJS</h2>
       <p>AngularJS is what HTML would have been, had it been designed for building web-apps. Declarative templates with data-binding, MVW, MVVM, MVC, ...</p>
       <p><a class="btn btn-default" href="https://angularjs.org/" role="button">View details</a></p>
