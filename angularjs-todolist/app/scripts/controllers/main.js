@@ -8,10 +8,6 @@
  * Controller of the angularjsTodolistApp
  */
 angular.module('angularjsTodolistApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope, $window) {
+		$scope.isLoggedIn = $window.sessionStorage.getItem("isLoggedIn") === "true";
   });

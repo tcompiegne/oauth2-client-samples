@@ -22,7 +22,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-		<nav class="navbar navbar-inverse navbar-fixed-top" th:fragment="navbar">
+		<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavBarCtrl">
     	<div class="container">
       	<div class="navbar-header">
         	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -31,7 +31,7 @@
           	<span class="icon-bar"></span>
           	<span class="icon-bar"></span>
         	</button>
-        	<a class="navbar-brand" href="#/">OAuth2 Todo List</a>
+        	<a class="navbar-brand" href="#/">OAuth2 Todo List {{isLoggedIn()}}</a>
       	</div>
       	<div id="navbar" class="collapse navbar-collapse">
         	<ul class="nav navbar-nav">
@@ -41,10 +41,10 @@
         	</ul>
         	<ul ng-show="username" class="nav navbar-nav navbar-right">
           	<li class="dropdown">
-            	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span>{{username}}</span> <b class="caret"></b></a>
+            	<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><span>{{username}}</span> <b class="caret"></b></a>
             	<ul class="dropdown-menu">
               	<li>
-              		<a th:href="${@urlService.getLogoutRedirectUri()}"><i class="glyphicon glyphicon-log-out"></i> Sign-out</a>           
+              		<a href="{{logoutRedirectUri()}}"><i class="glyphicon glyphicon-log-out"></i> Sign-out</a>           
               	</li>            
             	</ul>
           	</li>
@@ -74,8 +74,12 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+		<script src="scripts/controllers/navbar.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/todolist.js"></script>
+    <script src="scripts/controllers/login.js"></script>
+		<script src="scripts/controllers/logout.js"></script>
+		<script src="scripts/controllers/userinfo.js"></script>
 		<script src="scripts/services/todolist.js"></script>
     <!-- endbuild -->
 		<script type="text/javascript">

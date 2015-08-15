@@ -8,9 +8,8 @@
  * Services of the angularjsTodolistApp
  */
 
-var baseUrl = 'http://localhost:9001';
-
-angular.module('angularjsTodolistApp').factory('todoService', function($http){
+angular.module('angularjsTodolistApp').factory('todoService', function($http, $window){
+	var baseUrl = 'http://localhost:9001';
 	return { 
 		
 		findAll: function() {
@@ -18,7 +17,7 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http){
 				method: 'GET',
  				url: baseUrl + '/rest/todos',
  				headers: {
-					'Authorization' :	'Bearer d5116e25-b074-419c-bd4a-c1bf5507db33'
+					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token")
  				}
 			};
       return $http(req).then(function(result) {	
@@ -31,10 +30,10 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http){
 				method: 'POST',
  				url: baseUrl + '/rest/todos/add',
  				headers: {
-					'Authorization' :	'Bearer d5116e25-b074-419c-bd4a-c1bf5507db33',
+					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token"),
 					'Content-Type' : 'application/json'
  				},
-				data: '{ "description": "' + todo + '", "username" : "userTest" }'
+				data: '{ "description": "' + todo + '", "username" : "'+ $window.sessionStorage.getItem("username") +'" }'
 			};
       return $http(req).then(function(result) {	
  	    	return result.data;
@@ -46,7 +45,8 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http){
 				method: 'POST',
  				url: baseUrl + '/rest/todos/edit',
  				headers: {
-					'Authorization' :	'Bearer d5116e25-b074-419c-bd4a-c1bf5507db33'
+					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token"),
+					'Content-Type' : 'application/json'
  				},
 				data: '{ "id": ' + id + ', "description": "'+ todo + '" }'
 			};
@@ -60,7 +60,7 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http){
 				method: 'POST',
  				url: baseUrl + '/rest/todos/'+id+'/delete',
  				headers: {
-					'Authorization' :	'Bearer d5116e25-b074-419c-bd4a-c1bf5507db33'
+					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token")
  				}
 			};
 			return $http(req).then(function(result) {	
