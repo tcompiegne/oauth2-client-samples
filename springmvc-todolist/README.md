@@ -22,7 +22,7 @@ You can check the [parent project](https://github.com/tcompiegne/oauth2-client-s
 ```
 $ git clone https://github.com/tcompiegne/oauth2-client-samples
 $ cd oauth2-client-samples/springmvc-todolist
-$ mvn spring-boot:
+$ mvn spring-boot:run
 ...
 (app starts and listen on port 9000)
 
