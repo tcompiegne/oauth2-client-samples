@@ -18,8 +18,13 @@ You can check the [parent project](https://github.com/tcompiegne/oauth2-client-s
 * [Spring Rest Template](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
 * [Thymeleaf](http://www.thymeleaf.org/)
 
-## Run the application
-- git clone https://github.com/tcompiegne/oauth2-client-samples
-- cd oauth2-client-samples/springmvc-todolist
-- mvn spring-boot:run
-- browse the following URL: http://localhost:9000
+## Run the 
+```
+$ git clone https://github.com/tcompiegne/oauth2-client-samples
+$ cd oauth2-client-samples/springmvc-todolist
+$ mvn spring-boot:
+...
+(app starts and listen on port 9000)
+
+browse the following URL: http://localhost:9000
+```
