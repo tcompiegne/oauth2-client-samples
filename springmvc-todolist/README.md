@@ -18,7 +18,7 @@ You can check the [parent project](https://github.com/tcompiegne/oauth2-client-s
 * [Spring Rest Template](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/web/client/RestTemplate.html)
 * [Thymeleaf](http://www.thymeleaf.org/)
 
-## Run the 
+## Run the application
 ```
 $ git clone https://github.com/tcompiegne/oauth2-client-samples
 $ cd oauth2-client-samples/springmvc-todolist
