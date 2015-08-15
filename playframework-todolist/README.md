@@ -15,7 +15,12 @@ You can check the [parent project](https://github.com/tcompiegne/oauth2-client-s
 * [Play Framework](https://www.playframework.com/)
 
 ## Run the application
-- git clone https://github.com/tcompiegne/oauth2-client-samples
-- cd oauth2-client-samples/playframework-todolist
-- activator run
-- browse the following URL: http://localhost:9000
+```
+$ git clone https://github.com/tcompiegne/oauth2-client-samples
+$ cd oauth2-client-samples/playframework-todolist
+$ activator run
+...
+(app starts and listens on port 9000)
+
+browse the following URL: http://localhost:9000
+```
