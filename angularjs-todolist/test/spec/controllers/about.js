@@ -21,3 +21,4 @@ describe('Controller: AboutCtrl', function () {
     expect(AboutCtrl.awesomeThings.length).toBe(3);
   });
 });
+  

@@ -23,31 +23,10 @@
  *******************************************************************************/
 'use strict';
 
-/**
- * @ngdoc function
- * @name angularjsTodolistApp.controller:NavBarCtrl
- * @description
- * # NavBarCtrl
- * Controller of the angularjsTodolistApp
- */
 angular.module('angularjsTodolistApp')
-  .controller('NavBarCtrl', function ($scope, $rootScope, $window, CONFIG) {
-		$rootScope.$on('userLoggedIn', function() {
-			$scope.init();
-		});	
-
-		$rootScope.$on('userLogout', function() {
-			$scope.init();
-		});
-
-		$scope.logoutRedirectUri = function() {
-			return CONFIG.OAUTH_LOGOUT_REDIRECT_URL;
-		};
-
-		$scope.init = function() {
-			$scope.username = $window.sessionStorage.getItem("username");
-			$scope.isLogggedIn = $window.sessionStorage.getItem("isLogggedIn") === "true";
-		};
-
-		$scope.init();
-	});
+   .constant("CONFIG", {
+    "OAUTH_URL": "http://localhost:8080",
+    "OAUTH_REDIRECT_URL": "http://localhost:8080/oauth/authorize?response_type=token&client_id=test&redirect_uri=http://localhost:9000/oauth2callback.html",
+    "OAUTH_RESOURCE_SERVER_URL": "http://localhost:9001",
+    "OAUTH_LOGOUT_REDIRECT_URL": "http://localhost:8080/logout?target_url=http://localhost:9000/#/oauth2logoutcallback"
+  });

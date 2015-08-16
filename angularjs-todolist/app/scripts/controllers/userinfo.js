@@ -32,12 +32,11 @@
  */
 
 angular.module('angularjsTodolistApp')
-  .controller('UserInfoCtrl', function ($http, $rootScope, $window, $location) {
-		var baseUrl = 'http://localhost:8080';
+  .controller('UserInfoCtrl', function ($http, $rootScope, $window, $location, CONFIG) {
 		
 		var req = {
 			method: 'GET',
-			url: baseUrl + '/userinfo',
+			url: CONFIG.OAUTH_URL + '/userinfo',
 			headers: {
 				'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token")
 			}

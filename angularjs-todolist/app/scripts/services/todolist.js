@@ -30,14 +30,14 @@
  * # TodoServices
  * Services of the angularjsTodolistApp
  */
-angular.module('angularjsTodolistApp').factory('todoService', function($http, $window){
-	var baseUrl = 'http://localhost:9001';
+angular.module('angularjsTodolistApp').factory('todoService', function($http, $window, CONFIG){
+	
 	return { 
 		
 		findAll: function() {
 			var req = {
 				method: 'GET',
- 				url: baseUrl + '/rest/todos',
+ 				url: CONFIG.OAUTH_RESOURCE_SERVER_URL + '/rest/todos',
  				headers: {
 					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token")
  				}
@@ -50,7 +50,7 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http, $w
 		add: function(todo) {
 			var req = {
 				method: 'POST',
- 				url: baseUrl + '/rest/todos/add',
+ 				url: CONFIG.OAUTH_RESOURCE_SERVER_URL + '/rest/todos/add',
  				headers: {
 					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token"),
 					'Content-Type' : 'application/json'
@@ -65,7 +65,7 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http, $w
 		edit: function(id, todo) {
 			var req = {
 				method: 'POST',
- 				url: baseUrl + '/rest/todos/edit',
+ 				url: CONFIG.OAUTH_RESOURCE_SERVER_URL + '/rest/todos/edit',
  				headers: {
 					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token"),
 					'Content-Type' : 'application/json'
@@ -80,7 +80,7 @@ angular.module('angularjsTodolistApp').factory('todoService', function($http, $w
 		remove: function(id) {
 			var req = {
 				method: 'POST',
- 				url: baseUrl + '/rest/todos/'+id+'/delete',
+ 				url: CONFIG.OAUTH_RESOURCE_SERVER_URL + '/rest/todos/'+id+'/delete',
  				headers: {
 					'Authorization' :	'Bearer ' + $window.sessionStorage.getItem("access_token")
  				}
