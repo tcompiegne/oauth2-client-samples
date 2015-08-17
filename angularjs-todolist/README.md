@@ -45,7 +45,7 @@ Running `grunt test` will run the unit tests with karma.
 
 ## OAuth2 Implicit Flow
 
-Compare to the other projects wich use OAuth2 Authorization Code Flow, this project use the OAuth2 Implicit Flow which is more specific for this kind of projects (client projects) :
+Compare to the other projects wich use OAuth2 Authorization Code Flow, this project use the OAuth2 Implicit Flow which is more appropriate for this kind of projects (client projects) :
 
 ![oauth2-implicit-flow](https://github.com/tcompiegne/oauth2-client-samples/raw/master/angularjs-todolist/site/implicit_flow.png)
 
