@@ -23,10 +23,27 @@
  *******************************************************************************/
 'use strict';
 
+/**
+ * @ngdoc function
+ * @name angularjsTodolistApp.controller:OAuth2CallbackCtrl
+ * @description
+ * # OAuth2CallbackCtrl
+ * Controller of the angularjsTodolistApp
+ */
 angular.module('angularjsTodolistApp')
-   .constant("CONFIG", {
-    "OAUTH_URL": "http://localhost:8080",
-    "OAUTH_REDIRECT_URL": "http://localhost:8080/oauth/authorize?response_type=token&client_id=test&redirect_uri=http://localhost:9000/",
-    "OAUTH_RESOURCE_SERVER_URL": "http://localhost:9001",
-    "OAUTH_LOGOUT_REDIRECT_URL": "http://localhost:8080/logout?target_url=http://localhost:9000/#/oauth2logoutcallback"
-  });
+  .controller('OAuth2CallbackCtrl', function ($location, $window) {
+		var hash = $location.path().substr(1);
+		var responseParameters = hash.split("&");
+    var parameterMap = [];
+    for(var i = 0; i < responseParameters.length; i++) {
+        parameterMap[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
+    }
+    if(parameterMap.access_token !== undefined && parameterMap.access_token !== null) {
+ 			var access_token = parameterMap.access_token;
+      $window.sessionStorage.setItem("access_token", access_token);
+      $location.path('/userinfo');
+    } else {
+			console.log("Problem authenticating");
+			$location.path('/');
+    }
+	});

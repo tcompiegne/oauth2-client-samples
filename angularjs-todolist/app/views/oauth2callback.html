@@ -21,28 +21,4 @@
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
   SOFTWARE.
 -->
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
-        <script>
-            var callbackResponse = (document.URL).split("#")[1];
-            var responseParameters = (callbackResponse).split("&");
-            var parameterMap = [];
-            for(var i = 0; i < responseParameters.length; i++) {
-                parameterMap[responseParameters[i].split("=")[0]] = responseParameters[i].split("=")[1];
-            }
-            if(parameterMap.access_token !== undefined && parameterMap.access_token !== null) {
-                var access_token = parameterMap.access_token;
-                window.sessionStorage.setItem("access_token", access_token);
-                window.location.href = "http://localhost:9000/#/userinfo";
-            } else {
-                alert("Problem authenticating");
-            }
-        </script>
-    </head>
-    <body>Redirecting...</body>
-</html>
+<p>Redirecting...</p>

@@ -39,7 +39,7 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-	'xeditable'
+		'xeditable'
   ]) 
   .config(function ($routeProvider, $httpProvider) {
     $routeProvider
@@ -48,32 +48,37 @@ angular
         controller: 'MainCtrl',
         controllerAs: 'main'
       })
-	  .when('/login', {
- 		templateUrl: 'views/login.html',
-		controller: 'LoginCtrl',
-		controllerAs : 'login'
+	  	.when('/login', {
+		 		templateUrl: 'views/login.html',
+				controller: 'LoginCtrl',
+				controllerAs : 'login'
       })
       .when('/todos', {
         templateUrl: 'views/todolist.html',
         controller: 'TodoListCtrl',
         controllerAs: 'todoList'
       })
-	  .when('/userinfo', {
-    	templateUrl: 'views/userinfo.html',
+	  	.when('/userinfo', {
+    		templateUrl: 'views/userinfo.html',
         controller: 'UserInfoCtrl',
         controllerAs: 'userInfo'
-	  })
-	  .when('/oauth2logoutcallback', {
-		templateUrl: 'views/logout.html',
-		controller: 'LogoutCtrl',
-		controllerAs : 'logout'
+	  	})
+	  	.when('/oauth2logoutcallback', {
+				templateUrl: 'views/logout.html',
+				controller: 'LogoutCtrl',
+				controllerAs : 'logout'
       })
+			.when('/access_token=:accessToken', {
+      	templateUrl: 'views/oauth2callback.html',
+     	 	controller: 'OAuth2CallbackCtrl',
+				controllerAs: 'oauth2callback'
+			})			
       .otherwise({
         redirectTo: '/'
       });
 
 	  $httpProvider.interceptors.push('httpInterceptor');
-    })
+  })
 	.factory('httpInterceptor', function($q, $location) {
 		return {
 			response: function (response) {
